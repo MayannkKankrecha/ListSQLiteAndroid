@@ -53,4 +53,14 @@ public class dbhelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("SELECT * FROM "+TABLE_NAME,null);
         return res;
     }
+
+    public boolean checkdata(String nameTxt,String emailText,String passwordText){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE "+name+" = '"+nameTxt+"' AND "+email+" = '"+emailText+"'AND "+password+" = '"+passwordText+"'",null);
+        if (res.getCount()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

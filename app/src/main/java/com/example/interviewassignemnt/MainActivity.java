@@ -35,18 +35,26 @@ public class MainActivity extends AppCompatActivity {
                 String emailText = email.getText().toString();
                 String passwordText = password.getText().toString();
                 boolean emaill = Patterns.EMAIL_ADDRESS.matcher(emailText).matches();
+                boolean check = mydb.checkdata(nameText,emailText,passwordText);
 
                 if (nameText.isEmpty() || passwordText.isEmpty()) {
                     Snackbar.make(mainlayout, "Please fill all the fields", Snackbar.LENGTH_LONG).show();
                 }else if (!emaill) {
                     Snackbar.make(mainlayout, "Email invalid", Snackbar.LENGTH_LONG).show();
-                }else {
-//                    Intent i = new Intent(MainActivity.this, secound.class);
-//                    i.putExtra(secound.NAME, nameText);
-//                    i.putExtra(secound.EMAIL, emailText);
-//                    startActivity(i);
-                    adddata(nameText, emailText, passwordText);
+                }else  {
 //                    Snackbar.make(mainlayout, "Data added", Snackbar.LENGTH_LONG).show();
+//                    boolean check = mydb.checkdata(nameText,emailText);
+                    if (check == false){
+                        Intent i = new Intent(MainActivity.this, display.class);
+                        i.putExtra(display.NAME, nameText);
+                        i.putExtra(display.EMAIL, emailText);
+                        startActivity(i);
+                        adddata(nameText,emailText,passwordText);
+                    }else{
+
+                        Intent i = new Intent(MainActivity.this, secound.class);
+                        startActivity(i);
+                    }
 
                 }
             }
@@ -56,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
         boolean insert = mydb.addItem(name, email, password);
         if (insert == true){
             Snackbar.make(findViewById(R.id.mainlayout), "Data inserted", Snackbar.LENGTH_LONG).show();
-            Intent i = new Intent(MainActivity.this, secound.class);
-            startActivity(i);
         }else {
             Snackbar.make(findViewById(R.id.mainlayout), "Data not inserted", Snackbar.LENGTH_LONG).show();
         }

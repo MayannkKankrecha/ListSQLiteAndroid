@@ -17,24 +17,14 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class secound extends AppCompatActivity {
-//    public static final String NAME = "NAME";
-//    public static final String EMAIL = "EMAIL";
-//    String name,email;
+
     dbhelper Mydb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_secound);
-//        TextView nametxt = findViewById(R.id.name);
-//        TextView emailtxt = findViewById(R.id.email);
-//
-//        Intent i = getIntent();
-//        name = i.getStringExtra(NAME);
-//        email = i.getStringExtra(EMAIL);
-//
-//        nametxt.setText(name);
-//        emailtxt.setText(email);
+
 
         ListView list = findViewById(R.id.listview);
         Mydb = new dbhelper(this);
