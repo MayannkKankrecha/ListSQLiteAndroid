@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
     public void adddata(String name,String email,String password){
         boolean insert = mydb.addItem(name, email, password);
         if (insert == true){
-            Snackbar.make(findViewById(R.id.mainlayout), "Data inserted", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(R.id.mainlayout), "Data inserted", Snackbar.LENGTH_SHORT).show();
         }else {
-            Snackbar.make(findViewById(R.id.mainlayout), "Data not inserted", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(findViewById(R.id.mainlayout), "Data not inserted", Snackbar.LENGTH_SHORT).show();
         }
     }
 
